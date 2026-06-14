@@ -27,4 +27,5 @@ public class Move {
         return power;
     }
 
-}
+}  //if you gave me a chance id take it
+
