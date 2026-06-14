@@ -8,18 +8,22 @@ import MovesAndTypecharts.Type;
 import MovesAndTypecharts.Typechart;
 
 public class WildPokemonAI {
-    Move bestMove = null;
-    double bestScore = 0;
 
     public double Damage(int level, int power, int attack, int defence, double effectiveness){
+
         return ((((((2*level)/5) + 2) * power * (attack/defence))/50) * effectiveness);
+        
     }
 
     public Move pickMove(List<Move> moves, int attack, int level, int playerDefense, Type playerType) {
+
+        //local variables for score and Move
+        Move bestMove = null;
+        double bestScore = 0;
         
         for(Move move: moves){
             
-            double effectiveness = Typechart.getEffectiveness(move.getPokemonType(), playerType); //gets the pokemons type effectivemness from the chart. (How affective the pokemon is against players pokemon)
+            double effectiveness = Typechart.getEffectiveness(move.getPokemonType(), playerType); //gets the pokemons type effectivemness from the chart. (How effective the pokemon move is against players pokemon)
 
             double score = Damage(level, move.getPower(), attack, playerDefense, effectiveness); //scores each move so that we can get the best move from the set
 
@@ -30,9 +34,10 @@ public class WildPokemonAI {
                 bestScore = score;
                 bestMove = move;
 
-            } //gets teh best move
+            } //gets the best move
             
         }
+
         return bestMove;
     }
 
