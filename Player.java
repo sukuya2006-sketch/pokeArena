@@ -1,3 +1,5 @@
+import pokemonAI.Pokemon;
+
 public class Player {
     String name;
     Pokemon[]  team;
